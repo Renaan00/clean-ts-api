@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { Collection, MongoClient } from 'mongodb'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 
 export const MongoHelper = {
@@ -17,5 +17,9 @@ export const MongoHelper = {
     if (this.client) {
       await this.client.close()
     }
+  },
+
+  getCollection (name: string): Collection {
+    return this.client.db().collection(name)
   }
 }
